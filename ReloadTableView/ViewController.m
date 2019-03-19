@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(randomData)];
+    [self.view addGestureRecognizer:gesture];
     _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.estimatedRowHeight = 0;
     _tableView.estimatedSectionHeaderHeight = 0;
@@ -56,6 +58,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+#pragma mark - event responses
+- (void)randomData {
     int count = (int)_allArray.count - 1;
     for ( int i = count; i > 0; i--) {
         int random = arc4random()%i;
