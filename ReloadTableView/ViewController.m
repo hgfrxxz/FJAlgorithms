@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "DeepDiff.h"
+#import "Heckel.h"
+#import "UITableView+Extensions.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -61,6 +63,12 @@
     
 }
 
+long long usermicros() {
+    struct rusage usage;
+    getrusage(RUSAGE_SELF, &usage);
+    return usage.ru_utime.tv_sec * 1000000 + usage.ru_utime.tv_usec;
+}
+
 #pragma mark - event responses
 - (void)randomData {
     int count = (int)_allArray.count - 1;
@@ -70,9 +78,13 @@
     }
     
     NSMutableArray *newArray = [self getData];
-    NSArray *changes = [_diff diff:_dataArray newArray:newArray];
+    long start = usermicros();
+    Heckel *heckel = [[Heckel alloc] init];
+    NSArray *changes = [heckel diff:_dataArray newArray:newArray];//时间复杂度为O(n)
+//    NSArray *changes = [_diff diff:_dataArray newArray:newArray];//时间复杂度为O(m*n)
+    NSLog(@"end = %lld",usermicros() - start);
     _dataArray = newArray;
-    [self updateView:changes section:0];
+    [self.tableView reload:changes section:0];
 }
 
 #pragma mark - private methods
@@ -84,35 +96,6 @@
         [newArray addObject:_allArray[i]];
     }
     return newArray;
-}
-
-- (void)updateView:(NSArray *)changes section:(int)setion {
-    NSMutableArray<NSIndexPath *> *insertArray = [[NSMutableArray alloc] init];
-    NSMutableArray<NSIndexPath *> *deleteArray = [[NSMutableArray alloc] init];
-    NSMutableArray<NSIndexPath *> *replaceArray = [[NSMutableArray alloc] init];
-    for (Change *item in changes) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item.index inSection:setion];;
-        if (item.type == insertType) {
-            [insertArray addObject:indexPath];
-        } else if (item.type == deleteType) {
-            [deleteArray addObject:indexPath];
-        } else if (item.type == replaceType) {
-            [replaceArray addObject:indexPath];
-        }
-    }
-    
-    [_tableView beginUpdates];
-    if (insertArray.count) {
-        [_tableView insertRowsAtIndexPaths:insertArray.copy withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    if (deleteArray.count) {
-        [_tableView deleteRowsAtIndexPaths:deleteArray.copy withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    if (replaceArray.count) {
-        [_tableView reloadRowsAtIndexPaths:replaceArray.copy withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    [_tableView endUpdates];
-    
 }
 
 #pragma mark - setters and getters
