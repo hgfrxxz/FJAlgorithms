@@ -69,7 +69,7 @@
         Entry *entry = oldEntryArray[index];
         if (entry.indexsInOther == -1) {
             deleteArray[index] = [NSNumber numberWithInt:deleteCount];
-            Change *change = [[Change alloc] init];
+            Delete *change = [[Delete alloc] init];
             change.item = oldArray[index];
             change.type = deleteType;
             change.index = index;
@@ -82,7 +82,7 @@
         Entry *entry = newEntryArray[index];
         if (entry.indexsInOther == -1) {
             insertCount ++;
-            Change *change = [[Change alloc] init];
+            Insert *change = [[Insert alloc] init];
             change.item = newArray[index];
             change.type = insertType;
             change.index = index;
@@ -90,11 +90,11 @@
         } else {
             deleteCount = [deleteArray[entry.indexsInOther] intValue];
             if ((entry.indexsInOther - deleteCount + insertCount) != index) {
-                Change *change = [[Change alloc] init];
+                Move *change = [[Move alloc] init];
                 change.item = newArray[index];
                 change.type = moveType;
-                change.index = index;
-                change.fromindex = entry.indexsInOther;
+                change.toIndex = index;
+                change.fromIndex = entry.indexsInOther;
                 [changesArray addObject:change];
             }
         }

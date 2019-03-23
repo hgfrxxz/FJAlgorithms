@@ -10,6 +10,10 @@
 		58966DAF2244BACC00C123A9 /* Heckel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58966DAE2244BACB00C123A9 /* Heckel.m */; };
 		58966DB22244BB5800C123A9 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 58966DB12244BB5800C123A9 /* Entry.m */; };
 		58966DB52244DDF800C123A9 /* UITableView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58966DB42244DDF800C123A9 /* UITableView+Extensions.m */; };
+		58966DB82246012400C123A9 /* Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 58966DB72246012400C123A9 /* Insert.m */; };
+		58966DBB2246013900C123A9 /* Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 58966DBA2246013900C123A9 /* Delete.m */; };
+		58966DBE2246014E00C123A9 /* Replace.m in Sources */ = {isa = PBXBuildFile; fileRef = 58966DBD2246014E00C123A9 /* Replace.m */; };
+		58966DC12246016000C123A9 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = 58966DC02246016000C123A9 /* Move.m */; };
 		58A96CC62240F17C00386064 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A96CC52240F17C00386064 /* AppDelegate.m */; };
 		58A96CC92240F17D00386064 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A96CC82240F17C00386064 /* ViewController.m */; };
 		58A96CCC2240F17D00386064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A96CCA2240F17D00386064 /* Main.storyboard */; };
@@ -47,6 +51,14 @@
 		58966DB12244BB5800C123A9 /* Entry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		58966DB32244DDF800C123A9 /* UITableView+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+Extensions.h"; sourceTree = "<group>"; };
 		58966DB42244DDF800C123A9 /* UITableView+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Extensions.m"; sourceTree = "<group>"; };
+		58966DB62246012400C123A9 /* Insert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Insert.h; sourceTree = "<group>"; };
+		58966DB72246012400C123A9 /* Insert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Insert.m; sourceTree = "<group>"; };
+		58966DB92246013900C123A9 /* Delete.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Delete.h; sourceTree = "<group>"; };
+		58966DBA2246013900C123A9 /* Delete.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Delete.m; sourceTree = "<group>"; };
+		58966DBC2246014E00C123A9 /* Replace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Replace.h; sourceTree = "<group>"; };
+		58966DBD2246014E00C123A9 /* Replace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Replace.m; sourceTree = "<group>"; };
+		58966DBF2246016000C123A9 /* Move.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
+		58966DC02246016000C123A9 /* Move.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Move.m; sourceTree = "<group>"; };
 		58A96CC12240F17C00386064 /* ReloadTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReloadTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A96CC42240F17C00386064 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58A96CC52240F17C00386064 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -158,6 +170,14 @@
 			children = (
 				58A96CF72240F29D00386064 /* Change.h */,
 				58A96CFB2240F29D00386064 /* Change.m */,
+				58966DB62246012400C123A9 /* Insert.h */,
+				58966DB72246012400C123A9 /* Insert.m */,
+				58966DB92246013900C123A9 /* Delete.h */,
+				58966DBA2246013900C123A9 /* Delete.m */,
+				58966DBC2246014E00C123A9 /* Replace.h */,
+				58966DBD2246014E00C123A9 /* Replace.m */,
+				58966DBF2246016000C123A9 /* Move.h */,
+				58966DC02246016000C123A9 /* Move.m */,
 				58A96CFC2240F29D00386064 /* DeepDiff.h */,
 				58A96CF92240F29D00386064 /* DeepDiff.m */,
 				58A96CF82240F29D00386064 /* Row.h */,
@@ -300,14 +320,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58966DC12246016000C123A9 /* Move.m in Sources */,
 				58A96CFD2240F29D00386064 /* DeepDiff.m in Sources */,
 				58A96CFF2240F29D00386064 /* Change.m in Sources */,
 				58A96CFE2240F29D00386064 /* Row.m in Sources */,
+				58966DBB2246013900C123A9 /* Delete.m in Sources */,
 				58A96CC92240F17D00386064 /* ViewController.m in Sources */,
 				58966DB52244DDF800C123A9 /* UITableView+Extensions.m in Sources */,
 				58966DB22244BB5800C123A9 /* Entry.m in Sources */,
 				58A96CD42240F18800386064 /* main.m in Sources */,
+				58966DBE2246014E00C123A9 /* Replace.m in Sources */,
 				58A96CC62240F17C00386064 /* AppDelegate.m in Sources */,
+				58966DB82246012400C123A9 /* Insert.m in Sources */,
 				58966DAF2244BACC00C123A9 /* Heckel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

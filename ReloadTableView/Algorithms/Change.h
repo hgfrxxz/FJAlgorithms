@@ -20,11 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Change : NSObject
 
 @property (nonatomic, assign) ChangeType type;
-@property (nonatomic, strong) id item;
-@property (nonatomic, assign) int index;
-
-@property (nonatomic, strong) id fromItem;
-@property (nonatomic, assign) int fromindex;
 
 
 @end

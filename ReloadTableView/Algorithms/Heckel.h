@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Change.h"
+#import "Insert.h"
+#import "Delete.h"
+#import "Replace.h"
+#import "Move.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -8,6 +8,10 @@
 
 #import "UITableView+Extensions.h"
 #import "Change.h"
+#import "Insert.h"
+#import "Delete.h"
+#import "Replace.h"
+#import "Move.h"
 
 @implementation UITableView (Extensions)
 
@@ -18,12 +22,15 @@
     NSMutableArray<Change *> *moveArray = [[NSMutableArray alloc] init];
     for (Change *item in changes) {
         @autoreleasepool {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item.index inSection:section];;
+            NSIndexPath *indexPath;
             if (item.type == insertType) {
+                indexPath = [NSIndexPath indexPathForItem:((Insert *)item).index inSection:section];
                 [insertArray addObject:indexPath];
             } else if (item.type == deleteType) {
+                indexPath = [NSIndexPath indexPathForItem:((Delete *)item).index inSection:section];
                 [deleteArray addObject:indexPath];
             } else if (item.type == replaceType) {
+                indexPath = [NSIndexPath indexPathForItem:((Replace *)item).index inSection:section];
                 [replaceArray addObject:indexPath];
             } else if (item.type == moveType) {
                 [moveArray addObject:item];
@@ -42,7 +49,7 @@
         [self reloadRowsAtIndexPaths:replaceArray.copy withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     for (Change *item in moveArray) {
-        [self moveRowAtIndexPath:[NSIndexPath indexPathForRow:item.fromindex inSection:section] toIndexPath:[NSIndexPath indexPathForRow:item.index inSection:section]];
+        [self moveRowAtIndexPath:[NSIndexPath indexPathForRow:((Move *)item).fromIndex inSection:section] toIndexPath:[NSIndexPath indexPathForRow:((Move *)item).toIndex inSection:section]];
     }
     [self endUpdates];
 }

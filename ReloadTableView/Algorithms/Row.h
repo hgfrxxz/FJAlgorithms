@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Change.h"
+#import "Insert.h"
+#import "Delete.h"
+#import "Replace.h"
+#import "Move.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,8 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateMin:(NSMutableArray <NSMutableArray *>*)previousArray oldIndex:(int)oldIndex oldItem:(id)oldItem newIndex:(int)newIndex newItem:(id)newItem;
 
 - (void)update:(NSMutableArray <NSMutableArray *>*)previousArray newIndex:(int)newIndex;
-
-- (void)move:(NSMutableArray *)changes;
 
 @end
 
